@@ -4,9 +4,6 @@
 Web Voting berbasis client-server dengan base Code Igniter 3
 web ini dibuat untuk memenuhi sertifikasi bnsp.
 
-
-
-
 ## Run Locally
 
 jangan lupa taruh project ini di folder 
