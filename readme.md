@@ -1,7 +1,7 @@
 
 # M-Vote
 
-Web Voting berbasis client-server dengan base Code Igniter 3
+Web Voting berbasis client-server dengan base Code Igniter 3,
 web ini dibuat untuk memenuhi sertifikasi bnsp.
 
 ## Run Locally
@@ -53,7 +53,8 @@ password : admin123
 ```
 
 ```bash
-Login as user 
+Login as user
+
 username : tes
 password : 123
 ```
