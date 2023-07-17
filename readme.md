@@ -43,8 +43,6 @@ Running website with 'Admin' account
 
 ## Appendix
 
-Login as admin
-
 ```bash
 Login as admin
 
