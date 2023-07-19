@@ -15,6 +15,10 @@ class Utama extends CI_Controller
             redirect('admin/masuk');
         } else {
 
+
+            // Catat penggunaan memori sebelum eksekusi
+            $start_memory = memory_get_usage();
+
             /* 
             melemparkan data dari database ke dalam view layout/card yang
             terdapat di halaman views/admin/layout/card.php
@@ -24,6 +28,15 @@ class Utama extends CI_Controller
             $data['pemilih'] = $this->db->get('pemilih')->num_rows();
             $data['pilih'] = $this->db->get('pilih')->num_rows();
             $data['kndt'] = $this->db->get('kandidat')->result();
+
+            // Catat penggunaan memori setelah eksekusi
+            $end_memory = memory_get_usage();
+
+            // Hitung penggunaan memori dalam bytes
+            $memory_usage = $end_memory - $start_memory;
+
+            // Menambahkan data penggunaan memori ke variabel $data
+            $data['memory_usage'] = $memory_usage;
 
             // menampilkan halaman index di views/admin/index.php
             $this->load->view('admin/index', $data);

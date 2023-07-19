@@ -36,6 +36,9 @@
             </div>
         </div>
 
+        Penggunaan Memori: <?php echo $memory_usage; ?> bytes
+        <br>
+
         <?php $this->load->view('admin/layout/card') ?>
 
         <div class="row">
@@ -49,6 +52,12 @@
                             <?php
                             $cek = $this->db->get_where('pilih', array('id_kandidat' => $data->id_kandidat))->num_rows();
                             $suara = ($cek / $pilih) * 100;
+
+                            if ($cek != 0) {
+                                $suara = ($cek / $pilih) * 100;
+                            } else {
+                                $suara = 0;
+                            }
                             ?>
                             <h5 class="text-center">Perolehan suara : <?= $cek; ?></h5>
                             <h5 class="text-center">Persentase Suara : <?= $suara . "%"; ?></h5>
@@ -58,6 +67,8 @@
             <?php endforeach ?>
         </div>
     </main>
+
+    //menampilkan halaman layout bagian bottom dari folder view/admin/layout/bottom.php
     <?php $this->load->view('admin/layout/bottom'); ?>
 </body>
 

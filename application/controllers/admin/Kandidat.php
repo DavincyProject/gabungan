@@ -11,6 +11,11 @@ class Kandidat extends CI_Controller
     }
     public function index()
     {
+        /* 
+        melakukan fungsi cek terlebih dahulu dengan mengecek status 
+        apakah sudah login atau belum, status login dikirim dari controller masuk.php  
+        */
+
         if ($this->session->userdata('status') != 'login') {
             redirect('admin/masuk');
         } else {
@@ -41,9 +46,13 @@ class Kandidat extends CI_Controller
             ];
             $this->db->insert('kandidat', $data);
             $this->session->set_flashdata('success', "Data berhasil disimpan");
+
+            //mengirim hasil notifikasi sukses ke view admin/kandidat/index.php
             redirect('admin/kandidat');
         } else {
             $this->session->set_flashdata('error', $this->upload->display_errors());
+
+            //mengirim hasil notifikasi error ke view admin/kandidat/index.php
             redirect('admin/kandidat');
         }
     }
