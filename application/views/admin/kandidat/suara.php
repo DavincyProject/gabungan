@@ -71,7 +71,12 @@
                                     foreach ($kandidat as $data) : ?>
                                         <?php
                                         $cek = $this->db->get_where('pilih', array('id_kandidat' => $data->id_kandidat))->num_rows();
-                                        $suara = ($cek / $pilih) * 100;
+
+                                        if ($cek != 0) {
+                                            $suara = ($cek / $pilih) * 100;
+                                        } else {
+                                            $suara = 0;
+                                        }
                                         ?>
                                         <tr>
                                             <td><?= $no; ?></td>

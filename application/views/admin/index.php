@@ -51,7 +51,6 @@
                             <p class="card-text text-center text-danger font-weight-bold text-uppercase"><?= $data->nama_kandidat; ?></p>
                             <?php
                             $cek = $this->db->get_where('pilih', array('id_kandidat' => $data->id_kandidat))->num_rows();
-                            $suara = ($cek / $pilih) * 100;
 
                             if ($cek != 0) {
                                 $suara = ($cek / $pilih) * 100;
@@ -68,7 +67,6 @@
         </div>
     </main>
 
-    //menampilkan halaman layout bagian bottom dari folder view/admin/layout/bottom.php
     <?php $this->load->view('admin/layout/bottom'); ?>
 </body>
 

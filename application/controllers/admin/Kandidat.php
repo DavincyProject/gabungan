@@ -70,7 +70,7 @@ class Kandidat extends CI_Controller
         $id = $this->input->post('kode');
 
         // Memeriksa apakah ada file yang diunggah
-        if (isset($_FILES['foto']['name'])) {
+        if (!empty($_FILES['foto']['name'])) {
             $config['upload_path'] = './gambar/';
             $config['allowed_types'] = 'jpg|png|jpeg';
             $this->load->library('upload', $config);
@@ -91,6 +91,14 @@ class Kandidat extends CI_Controller
                 'nama_kandidat' => $nama,
                 'nomor_kandidat' => $nomor
             );
+
+            // // Jika foto tidak diunggah, ambil data foto yang sudah ada di database dan tetap gunakan foto tersebut.
+            // $existing_data = $this->db->get_where('kandidat', array('id_kandidat' => $id))->row();
+            // $data = array(
+            //     'nama_kandidat' => $nama,
+            //     'nomor_kandidat' => $nomor,
+            //     'foto_kandidat' => $existing_data->foto_kandidat, // Tetap gunakan foto yang sudah ada sebelumnya
+            // );
         }
 
         $this->db->where('id_kandidat', $id);
